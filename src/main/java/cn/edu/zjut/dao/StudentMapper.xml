@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.StudentMapper">
+
+    <resultMap id="studentMap" type="cn.edu.zjut.po.Student">
+        <id property="stuID" column="student_id" javaType="java.lang.Integer"/>
+        <result property="name" column="student_name" javaType="java.lang.String"/>
+        <result property="password" column="student_password" javaType="java.lang.String"/>
+        <result property="sex" column="student_sex" javaType="java.lang.Integer"/>
+        <result property="clazz" column="student_classname" javaType="java.lang.String"/>
+        <result property="depart" column="student_departname" javaType="java.lang.String"/>
+        <result property="email" column="student_email" javaType="java.lang.String"/>
+        <result property="img" column="student_img" javaType="java.lang.String"/>
+    </resultMap>
+
+    <insert id="insertStudent" parameterType="cn.edu.zjut.po.Student" useGeneratedKeys="true"
+            keyProperty="stuID">
+        INSERT INTO student (student_id, student_name, student_sex, student_password, student_classname,
+                             student_departname, student_email)
+        VALUES (#{stuID}, #{name}, #{sex}, #{password}, #{clazz}, #{depart}, #{email})
+    </insert>
+
+    <update id="updateStudent" parameterType="cn.edu.zjut.po.Student">
+        UPDATE student
+        SET student_name=#{name},
+            student_sex=#{sex},
+            student_password=#{password},
+            student_classname=#{clazz},
+            student_departname=#{depart},
+            student_email=#{email},
+            student_img=#{img}
+        where student_id = #{stuID}
+    </update>
+
+    <delete id="deleteStudent" parameterType="int">
+        DELETE
+        FROM student
+        WHERE student_id = #{id}
+    </delete>
+
+    <select id="getStudentById" parameterType="int" resultMap="studentMap">
+        SELECT *
+        FROM student
+        WHERE student_id = #{id}
+    </select>
+
+    <select id="getStudentByName" parameterType="String" resultMap="studentMap">
+        SELECT *
+        FROM student
+        WHERE student_name = #{name}
+    </select>
+
+    <select id="listAllStudent" resultMap="studentMap">
+        SELECT *
+        FROM student
+    </select>
+
+    <select id="listStudentByClass" parameterType="String" resultMap="studentMap">
+        SELECT *
+        FROM student
+        WHERE student_classname = #{className}
+    </select>
+
+    <select id="listStudentByDepart" resultMap="studentMap">
+        SELECT *
+        FROM student
+        WHERE student_departname = #{departName}
+    </select>
+
+    <insert id="insertStudentExcel" parameterType="java.util.List">
+        insert into student(student_id,student_name,student_password,student_sex,student_classname,student_departname,student_email)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+          (
+            #{item.stuID},
+            #{item.name},
+            #{item.password},
+            #{item.sex},
+            #{item.clazz},
+            #{item.depart},
+            #{item.email}
+          )
+        </foreach>
+    </insert>
+
+    <insert id="insertStudentFace" parameterType="java.util.List">
+        insert into student_face(student_id) values
+        <foreach collection="list" item="item" index="index"
+                 separator=",">
+            (#{item.stuID})
+        </foreach>
+    </insert>
+
+    <insert id="insertOneStudentFace" parameterType="cn.edu.zjut.po.Student">
+        insert into student_face(student_id)
+        values (#{stuID})
+    </insert>
+
+    <insert id="insertStudentScore" parameterType="java.util.List">
+        insert into student_score(student_id) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.stuID})
+        </foreach>
+    </insert>
+
+    <insert id="insertOneStudentScore" parameterType="cn.edu.zjut.po.Student">
+        insert into student_score(student_id, score)
+        values (#{stuID}, 0)
+    </insert>
+
+    <select id="getOpenid" resultType="java.lang.String">
+        select openid
+        from user
+        where student_id = #{stuID}
+    </select>
+</mapper>

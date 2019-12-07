@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.GiftMapper">
+
+    <resultMap id="giftMapper" type="cn.edu.zjut.po.Gift">
+        <id property="gift_id" column="gift_id" javaType="java.lang.Integer"/>
+        <result property="gift_name" column="gift_name" javaType="java.lang.String"/>
+        <result property="gift_descript" column="gift_descript" javaType="java.lang.String"/>
+        <result property="gift_score" column="gift_score" javaType="java.lang.Integer"/>
+        <result property="gift_img" column="gift_img" javaType="java.lang.String"/>
+        <result property="gift_quantity" column="gift_quantity" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <select id="selectAllGift" resultType="cn.edu.zjut.po.Gift" parameterType="cn.edu.zjut.po.Gift"
+            resultMap="giftMapper">
+        select *
+        from Gift
+    </select>
+
+    <select id="selectGiftById" resultMap="giftMapper" resultType="cn.edu.zjut.po.Gift"
+            parameterType="cn.edu.zjut.po.Gift">
+        select*
+        from Gift
+        where gift_id = #{gift_id}
+    </select>
+
+    <select id="selectGiftByName" resultMap="giftMapper" resultType="cn.edu.zjut.po.Gift">
+        select*
+        from Gift
+        where gift_name = #{gift_name}
+    </select>
+
+    <update id="updateGift">
+        update Gift
+        set gift_name=#{gift_name},
+            gift_descript=#{gift_descript},
+            gift_score=#{gift_score},
+            gift_img =#{gift_img},
+            gift_quantity=#{gift_quantity}
+        where gift_id = #{gift_id}
+    </update>
+
+    <insert id="insertGift" parameterType="cn.edu.zjut.po.Gift" useGeneratedKeys="true" keyProperty="gift_id"
+            keyColumn="gift_id">
+        insert into Gift(gift_name, gift_descript, gift_score, gift_img)
+        values (#{gift_name}, #{gift_descript}, #{gift_score}, #{gift_img})
+    </insert>
+
+    <delete id="deleteById">
+        delete
+        from Gift
+        where gift_id = #{gift_id}
+    </delete>
+</mapper>
+

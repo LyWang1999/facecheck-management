@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.QuerySignMapper">
+
+    <!-- 查询全部的打卡信息 -->
+    <select id="getAllSign" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign" resultMap="SignMap">
+        SELECT *
+        FROM sign
+    </select>
+    <!-- 由打卡id来查询 -->
+    <select id="getAllSignByID" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign"
+            resultMap="SignMap">
+        SELECT *
+        FROM sign
+        where sign_id = #{signID}
+    </select>
+    <!-- 由打卡名来查询 -->
+    <select id="getAllSignByName" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign"
+            resultMap="SignMap">
+        SELECT *
+        FROM sign
+        where sign_name = #{name}
+    </select>
+    <!-- 由打卡创建时间来查询 -->
+    <select id="getAllSignByCreatetime" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign"
+            resultMap="SignMap">
+        SELECT *
+        FROM sign
+        where createTime like CONCAT('%', #{createtime}, '%')
+    </select>
+    <!-- 由教师id来查询 -->
+    <select id="getAllSignByTeaid" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign"
+            resultMap="SignMap">
+        SELECT *
+        FROM sign
+        where teacher_id = #{teaID}
+    </select>
+    <!-- 得到还在有效期内的打卡 -->
+    <select id="getAllSignValid" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign"
+            resultMap="SignMap">
+        SELECT distinct software_engineering_design.sign.sign_id          sign_id,
+                        software_engineering_design.sign.sign_name        sign_name,
+                        software_engineering_design.sign.sign_description sign_description,
+                        software_engineering_design.sign.createtime       createtime,
+                        software_engineering_design.sign.teacher_id       teacher_id
+        FROM software_engineering_design.signinstance,
+             software_engineering_design.sign
+        where software_engineering_design.sign.sign_id = software_engineering_design.signinstance.sign_id
+          and software_engineering_design.signinstance.date > #{endtime}
+    </select>
+    <!-- 根据打卡名模糊查询 -->
+    <select id="getAllSignfuzzilybyName" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign"
+            resultMap="SignMap">
+        SELECT *
+        FROM sign
+        where sign_name like "%"#{name}"%"
+    </select>
+    <!-- 根据日期名模糊查询 -->
+    <select id="getAllSignfuzzilybyCal" resultType="cn.edu.zjut.po.Sign" parameterType="cn.edu.zjut.po.Sign"
+            resultMap="SignMap">
+        SELECT *
+        FROM sign
+        where createTime like "%"#{cal}"%"
+    </select>
+
+    <resultMap type="cn.edu.zjut.po.Sign" id="SignMap">
+        <id column="sign_id" jdbcType="INTEGER" property="signID"/>
+        <result column="sign_name" jdbcType="VARCHAR" property="name"/>
+        <result column="sign_description" jdbcType="VARCHAR" property="description"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="teacher_id" jdbcType="INTEGER" property="teaID"/>
+    </resultMap>
+</mapper> 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.ResultMapper">
+    <!-- 自定义返回结果集 -->
+    <resultMap id="resultMap" type="Sign">
+        <result property="signID" column="sign_id" javaType="java.lang.Integer"/>
+        <result property="name" column="sign_name" javaType="java.lang.String"/>
+        <result property="description" column="sign_description" javaType="java.lang.String"/>
+        <result property="createTime" column="createtime" javaType="java.sql.Date"/>
+        <result property="teaID" column="teacher_id" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <select id="selectByTeacher_id" resultMap="resultMap" resultType="cn.edu.zjut.po.Sign">
+        select * from Sign where teacher_id=#{teacher_id}
+    </select>
+    <!-- 按发布者序号查找 -->
+    <select id="selectBySign_id" resultMap="resultMap" resultType="cn.edu.zjut.po.Sign">
+        select * from Sign where sign_id=#{sign_id}
+    </select>
+    <!-- 按发布时间 -->
+    <select id="selectBySign_name" resultMap="resultMap" resultType="cn.edu.zjut.po.Sign">
+        select * from Sign where sign_name like CONCAT('%',#{arg0},'%') and teacher_id=#{arg1}
+    </select>
+    <!-- 按发布名称查找 -->
+    <select id="selectByCreatetime" resultMap="resultMap" resultType="cn.edu.zjut.po.Sign">
+     select * from Sign where createtime like CONCAT('%',#{arg0},'%')  and teacher_id=#{arg1}
+    </select>
+
+</mapper>

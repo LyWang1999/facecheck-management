@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.StudentSignMapper">
+
+
+    <resultMap id="InstanceMapper" type="cn.edu.zjut.po.StudentSign">
+        <id property="stuSignID" column="autoid" javaType="java.lang.Integer"/>
+        <result property="stuID" column="student_id" javaType="java.lang.Integer"/>
+        <result property="signInstID" column="signinstance_id" javaType="java.lang.Integer"/>
+        <result property="signTime" column="sign_time" javaType="java.util.Date"/>
+        <result property="signImgUrl" column="imgurl" javaType="java.lang.String"/>
+        <result property="stuEmail" column="student_email" javaType="java.lang.String"/>
+        <result property="stuImgUrl" column="student_img" javaType="java.lang.String"/>
+        <result property="similar" column="similar" javaType="java.lang.Double"/>
+        <result property="status" column="status" javaType="java.lang.Integer"/>
+    </resultMap>
+
+
+    <insert id="insertRecord" parameterType="cn.edu.zjut.po.StudentSign" useGeneratedKeys="true" keyProperty="stuSignID"
+            keyColumn="autoid">
+
+        <!-- <selectKey keyProperty="signInstID" resultType="java.lang.Integer" order="BEFORE">
+             select if(max(autoid) is null, 1, max(autoid) + 1) as stuSignID from student_sign
+         </selectKey>-->
+        insert into
+        student_sign(student_id,signinstance_id,status)
+        values(#{stuID},#{signInstID},0)
+    </insert>
+</mapper>
+

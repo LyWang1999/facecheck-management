@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.TaskMapper">
+
+    <resultMap id="signMap" type="cn.edu.zjut.po.Sign">
+        <id property="signID" column="sign_id" javaType="java.lang.Integer"/>
+        <result property="name" column="sign_name" javaType="java.lang.String"/>
+        <result property="description" column="sign_description" javaType="java.lang.String"/>
+        <result property="createTime" column="createtime" javaType="java.util.Date"/>
+        <result property="teaID" column="teacher_id" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <insert id="insertSignProject" parameterType="cn.edu.zjut.po.Sign" useGeneratedKeys="true" keyProperty="signID">
+        <selectKey keyProperty="signID" resultType="java.lang.Integer" order="BEFORE">
+            select if(max(sign_id) is null, 1, max(sign_id) + 1) as newId from sign
+        </selectKey>
+        INSERT INTO
+        sign (sign_id,sign_name,sign_description,createtime,teacher_id)
+        VALUES (#{signID},#{name},#{description},#{createTime},#{teaID})
+    </insert>
+
+
+    <select id="getSignProjectById" parameterType="int" resultMap="signMap">
+        SELECT *
+        FROM sign
+        WHERE teacher_id = #{teaID}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.TeacherMapper">
+
+    <resultMap type="cn.edu.zjut.po.Teacher" id="teacherMap">
+        <id column="teacher_id" property="teaID"/>
+        <result column="teacher_name" property="name"/>
+        <result column="teacher_password" property="password"/>
+        <result column="teacher_sex" property="sex"/>
+        <result column="teacher_phone" property="phone"/>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="teacherMap">
+        select *
+        from teacher
+        where teacher_id = #{id}
+    </select>
+
+    <select id="getTeacherById" parameterType="int" resultMap="teacherMap">
+        SELECT *
+        FROM teacher
+        WHERE teacher_id = #{id}
+    </select>
+
+    <select id="listTeacherByName" parameterType="String" resultMap="teacherMap">
+        SELECT *
+        FROM teacher
+        WHERE teacher_name = #{name}
+    </select>
+
+    <select id="listAllTeacher" resultMap="teacherMap">
+        SELECT *
+        FROM teacher
+    </select>
+
+    <insert id="insertTeacher" parameterType="cn.edu.zjut.po.Teacher">
+        INSERT INTO teacher (teacher_id, teacher_name, teacher_password, teacher_sex, teacher_phone)
+        VALUES (#{teaID}, #{name}, #{password}, #{sex}, #{phone})
+    </insert>
+
+    <delete id="deleteTeacher" parameterType="int">
+        DELETE
+        FROM teacher
+        WHERE teacher_id = #{id}
+    </delete>
+
+    <update id="updateTeacher" parameterType="cn.edu.zjut.po.Teacher">
+        UPDATE teacher
+        SET teacher_name=#{name},
+            teacher_password=#{password},
+            teacher_sex=#{sex},
+            teacher_phone=#{phone}
+        WHERE teacher_id = #{teaID}
+    </update>
+
+</mapper>
+

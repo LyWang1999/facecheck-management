@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 引入属性文件，在配置中占位使用 -->
+    <context:property-placeholder location="classpath*:db.properties"/>
+    <!--数据源配置 测试时记得修改为自己的数据库信息-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url"
+                  value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.uid}"/>
+        <property name="password" value="${jdbc.pwd}"/>
+    </bean>
+
+    <!--Spring的事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--支持注解驱动的事务管理，指定事务管理器 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--MyBatis sqlSessionFactory配置-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--dataSource属性指定要用到的连接池-->
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:cn/edu/zjut/dao/*Mapper.xml"/>
+        <property name="typeAliasesPackage" value="cn.edu.zjut.po"/>
+    </bean>
+
+    <!-- 自动扫描对象关系映射，使mapper不需要配置bean -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- 指定要自动扫描接口的基础包，实现接口 -->
+        <property name="basePackage" value="cn.edu.zjut.dao"/>
+    </bean>
+
+    <!-- 容器自动扫描IOC组件，添加@Component、@Service、@Controller不需要配置bean，添加@Autowired不需要setter和getter方法  -->
+    <context:component-scan base-package="cn.edu.zjut.**.*"/>
+
+    <!-- aspectj支持自动代理实现AOP功能 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!--aspect-->
+    <bean id="CheckAdmin" class="cn.edu.zjut.aspect.CheckAdmin"/>
+    <!-- 配置文件的方式 -->
+
+    <aop:config>
+        <aop:aspect id="checkAdmin" ref="CheckAdmin">
+            <aop:pointcut id="modify"
+                          expression="execution(* cn.edu.zjut.service.TeacherService.*Teacher(..)) || execution(* cn.edu.zjut.service.StudentService.*(..)) "/>
+            <aop:before method="checkAdmin" pointcut-ref="modify"/>
+        </aop:aspect>
+    </aop:config>
+    <bean id="CheckTeacher1" class="cn.edu.zjut.aspect.CheckTeacher1"/>
+    <aop:config>
+        <aop:aspect id="checkT1" ref="CheckTeacher1">
+            <aop:pointcut id="modify2" expression="execution(* cn.edu.zjut.service.*Sign*.*(..)) || execution(* cn.edu.zjut.service.Result*.*(..)) "  />
+            <aop:before method="checkTeacher" pointcut-ref="modify2"/>
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>

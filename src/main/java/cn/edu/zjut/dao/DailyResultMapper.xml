@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.DailyResultMapper">
+    <!-- 自定义返回结果集 -->
+    <resultMap id="dailyresultMap" type="SignInstance">
+        <id property="signInstID" column="signinstance_id" javaType="java.lang.Integer"></id>
+        <result property="signID" column="sign_id" javaType="java.lang.Integer"/>
+        <result property="startTime" column="starttime" javaType="java.sql.Time"/>
+        <result property="endTime" column="endtime" javaType="java.sql.Time"/>
+        <result property="longitude" column="longitude" javaType="java.lang.String"/>
+        <result property="latitude" column="latitude" javaType="java.lang.String"/>
+        <result property="placeName" column="placename" javaType="java.lang.String"/>
+        <result property="date" column="date" javaType="java.sql.Date"/>
+    </resultMap>
+
+    <select id="selectBySign_id" resultMap="dailyresultMap" resultType="cn.edu.zjut.po.SignInstance">
+        select * from signinstance where sign_id=#{signID}
+    </select>
+    <select id="selectBySigninstance_id" resultMap="dailyresultMap" resultType="cn.edu.zjut.po.SignInstance">
+        select * from signinstance where signinstance_id=#{signInstID}
+    </select>
+    <select id="selectNumberofAll" resultType="java.lang.Integer">
+        select count(student_id) from student_sign where signinstance_id=#{signInstID}
+    </select>
+    <select id="selectNumberofFact" resultType="java.lang.Integer">
+        select count(student_id) from student_sign where signinstance_id=#{signInstID} and status=2
+    </select>
+    <select id="selectSign_name" resultType="java.lang.String">
+        select sign_name from sign where sign_id=(select sign_id from signinstance where signinstance_id=#{signInstID})
+    </select>
+</mapper>

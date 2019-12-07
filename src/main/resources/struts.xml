@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <package name="strutsBean" extends="struts-default" namespace="/">
+        <!--添加学生-->
+        <action name="studentAdd" class="cn.edu.zjut.action.StudentAction" method="studentAdd">
+            <result name="studentAddSuccess">/addStudent.jsp</result>
+            <result name="studentAddFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--查找所有学生-->
+        <action name="allStudents" class="cn.edu.zjut.action.StudentAction" method="allStudents">
+            <result name="allStudentsSuccess">/searchStudent.jsp</result>
+            <result name="allStudentsFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--查找学生-->
+        <action name="stuSearch" class="cn.edu.zjut.action.StudentAction" method="stuSearch">
+            <result name="stuSearchSuccess">/searchStudent.jsp</result>
+            <result name="stuSearchFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--显示学生信息-->
+        <action name="stuMessage" class="cn.edu.zjut.action.StudentMessageAction" method="getStuMess">
+            <result name="getStuMessSuccess">/studentMessage.jsp</result>
+            <result name="getStuMessFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--更新学生信息-->
+        <action name="stuMessageUpdate" class="cn.edu.zjut.action.StudentMessageAction" method="updateStuMess">
+            <result name="updateStuMessSuccess">/studentMessage.jsp</result>
+            <result name="updateStuMessFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--得到所有学生的建议-->
+        <action name="getStuSuggest" class="cn.edu.zjut.action.SuggestAction" method="checkStudentSuggest">
+            <result name="checkStudentSuggestSuccess">/displayStudentSuggest.jsp</result>
+            <result name="checkStudentSuggestFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--删除学生信息-->
+        <action name="stuMessageDelete" class="cn.edu.zjut.action.StudentMessageAction" method="deleteStuMess">
+            <result name="deleteStuMessSuccess">/searchStudent.jsp</result>
+            <result name="deleteStuMessFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--添加教师信息-->
+        <action name="teacherAdd" class="cn.edu.zjut.action.TeacherAction" method="teacherAdd">
+            <result name="teacherAddSuccess">/addTeacher.jsp</result>
+            <result name="teacherAddFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--获得所有教师信息-->
+        <action name="allTeachers" class="cn.edu.zjut.action.TeacherAction" method="getAllTeachers">
+            <result name="getAllTeachersSuccess">/searchTeacher.jsp</result>
+            <result name="getAllTeachersFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--查询教师信息-->
+        <action name="teaSearch" class="cn.edu.zjut.action.TeacherAction" method="teacherSearch">
+            <result name="searchTeacherSuccess">/searchTeacher.jsp</result>
+            <result name="searchTeacherFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--显示教师信息-->
+        <action name="teaMessage" class="cn.edu.zjut.action.TeacherMessageAction" method="getTeaMess">
+            <result name="getTeaMessSuccess">/teacherMessage.jsp</result>
+            <result name="getTeaMessFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--修改教师信息-->
+        <action name="teaMessageUpdate" class="cn.edu.zjut.action.TeacherMessageAction" method="updateTeaMess">
+            <result name="updateTeaMessSuccess">/teacherMessage.jsp</result>
+            <result name="updateTeaMessFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--删除教师信息-->
+        <action name="teaMessageDelete" class="cn.edu.zjut.action.TeacherMessageAction" method="deleteTeaMess">
+            <result name="deleteTeaMessSuccess">/searchTeacher.jsp</result>
+            <result name="deleteTeaMessFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--教师插入一条建议-->
+        <action name="teaSuggestInsert" class="cn.edu.zjut.action.SuggestAction" method="insertTeacherSuggest">
+            <result name="insertTeacherSuggestSuccess">/addTeacherSuggest.jsp</result>
+            <result name="insertTeacherSuggestFail">/error.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
+        <!--得到所有教师的建议-->
+        <action name="getTeaSuggest" class="cn.edu.zjut.action.SuggestAction" method="checkTeacherSuggest">
+            <result name="checkTeacherSuggestSuccess">/displayTeacherSuggest.jsp</result>
+            <result name="checkTeacherSuggestFail">/error.jsp</result>
+            <result name="login">/admin.jsp</result>
+        </action>
+        <!--教师登录-->
+        <action name="teacherLogin" class="cn.edu.zjut.action.TeacherAction" method="login">
+            <result name="success">/addTeacherSuggest.jsp</result>
+            <result name="fail">/login.jsp</result>
+        </action>
+        <!--管理员登录-->
+        <action name="adminLogin" class="cn.edu.zjut.action.AdminAction" method="login">
+            <result name="success">/addTeacher.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+        <!--管理员注册-->
+        <action name="AdminRegister" class="cn.edu.zjut.action.AdminAction" method="register">
+            <result name="success">/admin.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="exportExcel" class="cn.edu.zjut.action.ListAction" method="exportExcel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="contentDisposition">attachment;filename="nishizhu".xls</param>
+                <param name="bufferSize">1024</param>
+                <param name="inputName">excelFile</param>
+            </result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="inputExcel" class="cn.edu.zjut.action.ListAction" method="inputExcel">
+            <result name="success">/addStudent.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="makeAnn" class="cn.edu.zjut.action.MakeAnnAction" method="makeAnn">
+            <result name="success">/makeAnn.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="notice" class="cn.edu.zjut.action.NoticeAction" method="notice">
+            <result name="success">/makeNotice.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="searchNotice" class="cn.edu.zjut.action.NoticeAction" method="search">
+            <result name="success">/SearchNotice.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="getAllSign" class="cn.edu.zjut.action.QuerySignAction" method="getAllSign">
+            <result name="getAllSignSuccess">/searchSign.jsp</result>
+            <result name="getAllSignFail">/error.jsp</result>
+        </action>
+
+        <action name="querySign" class="cn.edu.zjut.action.QuerySignAction" method="querySign">
+            <result name="querySignSuccess">/searchSign.jsp</result>
+            <result name="querySignFail">/error.jsp</result>
+        </action>
+
+        <action name="querySignbyDate" class="cn.edu.zjut.action.QuerySignAction" method="querySignByDate">
+            <result name="querySignByDateSuccess">/searchSignByDate.jsp</result>
+            <result name="querySignByDateFail">/error.jsp</result>
+        </action>
+
+        <action name="querySignfuzzily" class="cn.edu.zjut.action.QuerySignAction" method="querySignFuzzily">
+            <result name="querySignFuzzilySuccess">/searchSignfuzzily.jsp</result>
+            <result name="querySignFuzzilyFail">/error.jsp</result>
+        </action>
+
+        <action name="getSignInstance" class="cn.edu.zjut.action.QuerySignInstanceaction" method="getSignInstance">
+            <result name="getSignInstancesuccess">/displaySignInstance.jsp</result>
+            <result name="getSignInstancefail">/error.jsp</result>
+        </action>
+
+        <action name="lookAllSign" class="cn.edu.zjut.action.ResultAction" method="lookAllSign">
+            <result name="success-lookAll">allResults.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="findSign" class="cn.edu.zjut.action.ResultAction" method="findSign">
+            <result name="success-find">allResults.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="getDailyResult" class="cn.edu.zjut.action.DailyResultAction" method="getDailyResult">
+            <result name="success-Daily">dailyResult.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="getResultDetail" class="cn.edu.zjut.action.ResultDetailAction" method="getResultDetail">
+            <result name="success-getDetail">resultDetails.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="changeResult" class="cn.edu.zjut.action.ResultDetailAction" method="changeResult">
+            <result name="success-Details">resultDetails.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="giftAdd" class="cn.edu.zjut.action.GiftAction" method="addGift">
+            <result name="success-addGift">/uploadGift.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="lookAllGift" class="cn.edu.zjut.action.GiftAction" method="lookAllGift">
+            <result name="success-lookAllGift">/showGift.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="findGiftById" class="cn.edu.zjut.action.GiftAction" method="findGiftById">
+            <result name="success-findGiftById">/changeGift.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="changeGift" class="cn.edu.zjut.action.GiftAction" method="changeGift">
+            <result name="success-changeGift">changeGift.jsp</result>
+            <result name="fail">error.jsp</result>
+        </action>
+
+        <action name="deleteGift" class="cn.edu.zjut.action.GiftAction" method="deleteGift">
+            <result name="success-deleteGift">/showGift.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="lookStudentGift" class="cn.edu.zjut.action.StudentGiftAction" method="lookStudentGift">
+            <result name="success-lookStudentGift">/showStuGift.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="refuseChange" class="cn.edu.zjut.action.StudentGiftAction" method="refuseChange">
+            <result name="success-refuseChange">/showStuGift.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="applyChange" class="cn.edu.zjut.action.StudentGiftAction" method="applyChange">
+            <result name="success-applyChange">/showStuGift.jsp</result>
+            <result name="fail">/error.jsp</result>
+        </action>
+
+        <action name="TaskOutCenterAction" class="cn.edu.zjut.action.TaskOutCenterAction" method="buildTask">
+            <result type="chain" name="success">inToPlatformAction</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="templateAction" class="cn.edu.zjut.action.TaskOutCenterAction" method="buildTemplate">
+            <result type="chain" name="success">inToPlatformAction</result>
+            <result name="fail">login.jsp</result>
+
+        </action>
+        <action name="inToPlatformAction" class="cn.edu.zjut.action.TaskOutCenterAction" method="inToPlatform">
+            <result name="success">TaskPlatformUI.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="CreateInsAction" class="cn.edu.zjut.action.TaskOutCenterAction" method="gotoinstance">
+            <result name="success">signinfoUI.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="DeleteInsAction" class="cn.edu.zjut.action.TaskOutCenterAction" method="deleteInstance">
+            <result name="success">signinfoUI.jsp</result>
+            <result name="fail">login.jsp</result>
+        </action>
+
+        <action name="newInsAction" class="cn.edu.zjut.action.TaskOutCenterAction" method="newIns">
+            <result type="chain" name="success">inToPlatformAction</result>
+            <result name="fail">login.jsp</result>
+        </action>
+    </package>
+</struts>

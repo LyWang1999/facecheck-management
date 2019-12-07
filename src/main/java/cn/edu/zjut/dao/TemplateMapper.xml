@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.dao.TemplateMapper">
+
+    <resultMap id="template" type="cn.edu.zjut.po.SignInstanceTemplate">
+        <id property="tempID" column="template_id" javaType="java.lang.Integer"></id>
+        <result property="teaID" column="teacher_id" javaType="java.lang.Integer"></result>
+        <result property="startTime" column="starttime" javaType="java.sql.Time"></result>
+        <result property="endTime" column="endtime" javaType="java.sql.Time"></result>
+        <result property="radius" column="radius" javaType="java.lang.Integer"></result>
+        <result property="longitude" column="longitude" javaType="java.lang.String"></result>
+        <result property="latitude" column="latitude" javaType="java.lang.String"></result>
+        <result property="placeName" column="placename" javaType="java.lang.String"></result>
+    </resultMap>
+
+
+    <insert id="insertTemplate" parameterType="cn.edu.zjut.po.SignInstanceTemplate" useGeneratedKeys="true"
+            keyProperty="tempID">
+        <selectKey keyProperty="tempID" resultType="java.lang.Integer" order="BEFORE">
+            select if(max(template_id) is null, 1, max(template_id) + 1) as newtemplateId from template
+        </selectKey>
+        INSERT INTO
+        template (template_id,teacher_id,starttime,endtime,longitude,latitude,radius,placename)
+        VALUES (#{tempID},#{teaID},#{startTime},#{endTime},#{longitude},#{latitude},#{radius},#{placeName})
+    </insert>
+
+
+    <select id="getTemplateByTid" parameterType="int" resultMap="template">
+        SELECT * FROM template
+        WHERE teacher_id = #{teaID}
+    </select>
+
+    <select id="getTemplateByid" parameterType="int" resultMap="template">
+        SELECT * FROM template
+        WHERE template_id = #{tempID}
+    </select>
+
+    <delete id="DeleteTemplate" parameterType="int">
+
+        delete  from template where template_id=#{tempID}
+
+    </delete>
+
+
+</mapper>
