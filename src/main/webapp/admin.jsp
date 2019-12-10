@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>可自由切换的注册登录表单模板</title>
+    <title>校园人脸签到系统</title>
     <link href='layui/css/BiaoKuang.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="layui/css/normalize.min.css">
     <link rel="stylesheet" href="layui/css/style.css">

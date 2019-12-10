@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-
 import com.opensymphony.xwork2.ActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,7 +71,6 @@ public class ResultAction extends ActionSupport {
     }
 
     @Resource
-
     public void setResultService(ResultService resultService) {
         this.resultService = resultService;
     }
