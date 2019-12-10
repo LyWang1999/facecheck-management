@@ -9,7 +9,6 @@
         添加学生信息
     </div>
     <form class="layui-form" action="studentAdd.action" method="post">
-
         <div class="layui-form-item">
             <label class="layui-form-label">学号</label>
             <div class="layui-input-block" style="width: 200px;">
