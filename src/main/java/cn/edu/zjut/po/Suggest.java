@@ -3,9 +3,9 @@ package cn.edu.zjut.po;
 
 
 public class Suggest {
-    String name;
-    String suggest;
-    String time;
+    private String name;
+    private String suggest;
+    private String time;
 
     public Suggest() {
     }

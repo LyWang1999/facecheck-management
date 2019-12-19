@@ -35,7 +35,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <s:iterator id="list" value="#request.students" status="check">
+                <s:iterator id="list" value="#request.students">
                     <tr>
                         <td><s:property value="#list.stuID"/></td>
                         <td><s:property value="#list.name"/></td>
@@ -43,7 +43,8 @@
                             <s:param name="templateid" value="#list.stuID"/>
                         </s:url>
                         <td>
-                            <input type="checkbox" name="box" id="#list.stuID"><label for="#list.stuID">选择</label>
+                            <label for="<s:property value='#list.stuID'/>">选择</label>
+                            <input type="checkbox" name="box" id="<s:property value='#list.stuID'/>">
                         </td>
                     </tr>
                 </s:iterator>
@@ -63,14 +64,12 @@
     <script type="text/javascript">
         function handed() {
             var rows = document.getElementById('table').rows;
-            var chk = document.getElementById('table').getElementsByTagName("input");
+            var layui_icon = document.getElementsByTagName('i');
             var str = "";
-            for (var i = 0; i < chk.length; i++) {
-                if (chk[i].type == "checkbox") {
-                    if (chk[i].checked) {
-                        var row = chk[i].parentElement.parentElement.rowIndex;
-                        str += rows[row].cells[0].innerHTML + ","
-                    }
+            for (var i = 0; i < layui_icon.length; i++) {
+                if (layui_icon[i].parentElement.className.indexOf('layui-form-checked') !== -1) {
+                    var row = layui_icon[i].parentElement.parentElement.parentElement.parentElement.rowIndex;
+                    str += rows[row+1].cells[0].innerHTML + ",";
                 }
             }
             str = str.substring(0, str.length - 1);
@@ -91,5 +90,5 @@
     <%--        });--%>
     <%--    });--%>
     <%--</script>--%>
-<%@ include file="UIbottom.jsp" %>
+    <%@ include file="UIbottom.jsp" %>
 </html>

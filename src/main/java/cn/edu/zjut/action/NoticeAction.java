@@ -31,7 +31,7 @@ public Notice getNotice(){
             System.out.println(notice.getContent()+notice.getTitle());
             if (noticeService.makeNotice(notice))
                 return "success";
-            return "fails";
+            return "fail";
         } catch (Exception e) {
             e.printStackTrace();
             return "fail";

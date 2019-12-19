@@ -52,9 +52,6 @@ public class SignInstanceService implements ISignInstanceService {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-
-
-
         try {
 
             temp = templateMapper.getTemplateByid(templateid);//根据id得到签到模板

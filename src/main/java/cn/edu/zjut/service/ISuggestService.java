@@ -10,19 +10,19 @@ public interface ISuggestService {
      * @param suggest
      * @return
      */
-    public boolean insertTeacherSuggest(String teacherID, String suggest);
+    boolean insertTeacherSuggest(String teacherID, String suggest);
 
     /**
      * @Author 卢益铭
      * @Describe 通过dao查询到教师所有的反馈，按时间倒序排序
      * @return
      */
-    public boolean getTeacherSuggest();
+    boolean getTeacherSuggest();
 
     /**
      * @Author 卢益铭
      * @Describe 通过dao查询到学生所有的反馈，按时间倒序排序
      * @return
      */
-    public boolean getStudentSuggest();
+    boolean getStudentSuggest();
 }

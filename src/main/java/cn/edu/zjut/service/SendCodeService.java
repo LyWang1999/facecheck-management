@@ -35,8 +35,7 @@ public class SendCodeService {
 
     //短信模板ID
     private static final String TEMPLATEID="9494598";
-    //手机号
-    private static final String MOBILE="15988829461";
+
     //验证码长度，范围4～10，默认为4
     private static final String CODELEN="4";
 

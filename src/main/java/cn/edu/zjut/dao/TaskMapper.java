@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface TaskMapper {
 
-    public void insertSignProject(Sign sign) throws Exception;
+    void insertSignProject(Sign sign) throws Exception;
 
-    public List<Sign> getSignProjectById(int teaID) throws Exception;
+    List<Sign> getSignProjectById(int teaID) throws Exception;
 }

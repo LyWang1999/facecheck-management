@@ -65,5 +65,4 @@ public class SuggestService implements ISuggestService {
             return false;
         }
     }
-
 }
