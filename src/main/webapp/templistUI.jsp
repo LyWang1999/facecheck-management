@@ -9,7 +9,7 @@
         模板管理
     </div>
     <div style="padding-left: 35px;">
-    <button class="layui-btn" onclick="javascrtpt:window.open('templateUI.jsp','newwindow')">创建模板</button>
+    <button class="layui-btn" onclick="javascrtpt:window.open('templateUI.jsp', 'window');">创建模板</button>
     </div>
     <div style="width: 1200px;margin: 20px 40px;">
         <table class="layui-table" lay-data="{page:true, id:'teaTable'}" lay-filter="test">
@@ -65,7 +65,7 @@
                 </s:url>
                 <td>
                     <s:a href="%{addurl}" onclick="return myclick();" class="layui-btn layui-btn-normal layui-btn-xs">选择模板</s:a>
-                    <s:a href="%{deleteurl}" class="layui-btn layui-btn-danger layui-btn-xs">删除模板</s:a>
+                    <s:a href="%{deleteurl}" onclick="if (confirm('确认删除该模板？')) return true; else return false;" class="layui-btn layui-btn-danger layui-btn-xs">删除模板</s:a>
                 </td>
 
             </tr>

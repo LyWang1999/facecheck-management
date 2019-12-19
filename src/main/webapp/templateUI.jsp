@@ -45,8 +45,6 @@
     })
 
     function check() {
-
-
         var code = document.getElementById("code").value;
         var cookiecode = getCookieValue("code");
         console.log(cookiecode);
@@ -134,13 +132,21 @@
 
     function myFunction() {
         var message = sessionStorage.getItem('message'), str;
+        var x = document.cookie;
+        if(x != null){
+            var result = x.position.split(",");
+            document.getElementById("longitude").value = result[0];
+            document.getElementById("latitude").value = result[1];
+            document.getElementById("address").value = result[2];
+            document.cookie='';
+        }
         if (message != null) {
             str = JSON.parse(message);
             var result = str.position.split(",");
             document.getElementById("longitude").value = result[0];
             document.getElementById("latitude").value = result[1];
             document.getElementById("address").value = str.address;
-            sessionStorage.clear();
+            // sessionStorage.clear();
         }
     }
 
@@ -219,9 +225,9 @@
         <div class="layui-form-item">
             <label class="layui-form-label" style="width:150px "></label>
             <div class="layui-input-block">
-                <input type="submit" class="layui-btn" value="确认" id="go" onclick="return check()"/>
+                <input type="submit" class="layui-btn" value="确认" id="go"/>
                 <input type="button" class="layui-btn" value="打开地图" align="right"
-                       onclick="javascrtpt:window.open('locate.jsp','newindow')"/></div>
+                       onclick="javascrtpt:window.open('locate.jsp', 'window');"/></div>
         </div>
         <%--
             <label>

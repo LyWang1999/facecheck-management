@@ -28,7 +28,7 @@
 
     <insert id="insertTeacherSuggest">
 	insert into suggest_teacher(teacher_id,suggest,time)
-	 values(#{teacherID},#{suggest},#{mtime})
+	 values(#{teacherID},#{suggest},#{time})
 	</insert>
 
 </mapper>

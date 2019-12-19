@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 @Service
-public class NoticeService implements  INoticeService {
+public class NoticeService implements INoticeService {
     private Map<String, Object> request, session;
     @Autowired
     NoticeMapper noticeMapper;
@@ -35,16 +35,16 @@ public class NoticeService implements  INoticeService {
             notice.setDate(new Date());
             notice.incre();
             noticeMapper.insertNotice(notice);
-            int id=noticeMapper.selectMaxId();
+            int id = noticeMapper.selectMaxId();
             ArrayList<Student> stu = (ArrayList<Student>) studentMapper.listAllStudent();
             ArrayList<Notice> notices = new ArrayList<Notice>();
             for (Iterator it = stu.iterator(); it.hasNext(); ) {
                 Notice notice1 = new Notice();
                 notice1.setStuID(((Student) it.next()).getStuID());
-                String ins=studentMapper.getOpenid(notice1.getStuID());
+                String ins = studentMapper.getOpenid(notice1.getStuID());
 
-                if(ins==null)
-                notice1.setOpenid("noid");
+                if (ins == null)
+                    notice1.setOpenid("noid");
                 else
                     notice1.setOpenid(ins);
                 notice1.setDate(notice.getDate());
@@ -59,20 +59,19 @@ public class NoticeService implements  INoticeService {
         }
     }
 
-    public boolean searchNotice(int teaID){
+    public boolean searchNotice(int teaID) {
         ActionContext ctx = ActionContext.getContext();
         request = (Map) ctx.get("request");
         session = (Map) ctx.getSession();
-        try{
-            ArrayList<Notice>noticeList=noticeMapper.selectNotice(teaID);
+        try {
+            ArrayList<Notice> noticeList = noticeMapper.selectNotice(teaID);
 
-            for(Iterator<Notice>it=noticeList.iterator();it.hasNext();){
+            for (Iterator<Notice> it = noticeList.iterator(); it.hasNext(); ) {
                 System.out.println(it.next().getContent());
             }
-            session.put("noticeList",noticeList);
+            session.put("noticeList", noticeList);
             return true;
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }

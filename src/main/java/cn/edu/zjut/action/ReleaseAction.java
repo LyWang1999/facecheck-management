@@ -20,7 +20,7 @@ public class ReleaseAction {
      * @Describe 接受ajax异步请求 调用接口发送语音短信
      * @throws Exception
      */
-    public void sendmsg() throws Exception {
+    public String sendmsg() throws Exception {
 
         HttpServletResponse response = ServletActionContext.getResponse();
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -35,7 +35,7 @@ public class ReleaseAction {
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(msg);
 
-
+        return "success";
     }
 
 

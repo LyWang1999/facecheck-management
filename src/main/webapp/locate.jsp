@@ -153,7 +153,7 @@
         });
         var onModeChange = function (e) {
             positionPicker.setMode(e.target.value)
-        }
+        };
         var startButton = document.getElementById('start');
         var stopButton = document.getElementById('stop');
         var dragMapMode = document.getElementsByName('mode')[0];
@@ -168,12 +168,18 @@
             message.nearestPOI = document.getElementById('nearestPOI').innerHTML;
             var json = JSON.stringify(message);
             sessionStorage.setItem('message', json);
-            window.open("/templateUI.jsp", 'newindow');
-        })
+            document.cookie = document.getElementById('lnglat').innerHTML + ","
+                + document.getElementById('address').innerHTML;
+            // window.open("/templateUI.jsp", 'window');
+            // history.go(-1);
+            // window.location.href='templateUI.jsp'
+            // self.location=document.referrer;
+            window.open('templateUI.jsp', 'window');
+        });
         AMap.event.addDomListener(stopButton, 'click', function () {
             geolocation.getCurrentPosition();
 
-        })
+        });
         AMap.event.addDomListener(dragMapMode, 'change', onModeChange);
         AMap.event.addDomListener(dragMarkerMode, 'change', onModeChange);
         positionPicker.start();

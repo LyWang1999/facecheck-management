@@ -14,14 +14,14 @@ public interface SuggestMapper {
      * @Describe 返回所有的学生反馈
      * @return
      */
-    public List<Suggest> listStudentSuggest();
+    List<Suggest> listStudentSuggest();
 
     /**
      * @Author 卢益铭
      * @Describe 返回所有的教师反馈
      * @return
      */
-    public List<Suggest> listTeacherSuggest();
+    List<Suggest> listTeacherSuggest();
 
     /**
      * @Author 卢益铭
@@ -31,6 +31,5 @@ public interface SuggestMapper {
      * @param time
      * @return
      */
-    public int insertTeacherSuggest(int teacherID,String suggest, String time);
-
+    int insertTeacherSuggest(@Param("teacherID") int teacherID, @Param("suggest")String suggest, @Param("time")String time);
 }
