@@ -174,7 +174,12 @@
             // history.go(-1);
             // window.location.href='templateUI.jsp'
             // self.location=document.referrer;
-            window.open('templateUI.jsp', 'window');
+            var str = message.position + "," + message.address;
+            var result = str.split(',');
+            window.open("templateUI.jsp?longitude="+result[0]+"&latitude="+result[1]
+                +"&address="+message.address
+                , 'new_window');
+            window.close();
         });
         AMap.event.addDomListener(stopButton, 'click', function () {
             geolocation.getCurrentPosition();
