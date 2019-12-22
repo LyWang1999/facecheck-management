@@ -35,12 +35,12 @@
                     <td><s:property value="student_class"/></td>
                     <td><s:property value="student_department"/></td>
                     <td><s:property value="studentsign.signTime"/></td>
-                    <td><s:property value="0.08"/></td>
+                    <td><s:property value="0.83"/></td>
                     <td>
                         <s:form action="changeResult" method="post">
                             <s:hidden name="resultdetail.studentsign.stuSignID" value="%{studentsign.stuSignID}"/>
                             <s:hidden name="resultdetail.studentsign.signInstID" value="%{studentsign.signInstID}"/>
-                            <s:radio name="resultdetail.studentsign.status" list="%{#{'0':'未到','1':'请假','2':'已到'}}"
+                            <s:radio name="resultdetail.studentsign.status" list="%{#{'0':'未到','2':'请假','1':'已到'}}"
                                      value="studentsign.status" onclick="javascript:submit()"/>
                         </s:form>
                     </td>

@@ -11,7 +11,7 @@
     <div style="padding-left: 35px;">
     <button class="layui-btn" onclick="javascrtpt:window.open('templateUI.jsp', 'window');">创建模板</button>
     </div>
-    <div style="width: 1200px;margin: 20px 40px;">
+    <div style="width: 1250px;margin: 20px 40px;">
         <table class="layui-table" lay-data="{page:true, id:'teaTable'}" lay-filter="test">
             <thead>
             <tr>
@@ -20,7 +20,7 @@
                 <th lay-data="{field:'endTime', width:150, sort:true}">签到结束时间</th>
                 <th lay-data="{field:'longitude', width:120, sort:true}">经度</th>
                 <th lay-data="{field:'latitude', width:120, sort:true}">纬度</th>
-                <th lay-data="{field:'placeName', width:370, sort:true}">打卡地点</th>
+                <th lay-data="{field:'placeName', width:420, sort:true}">打卡地点</th>
                 <th lay-data="{field:'ope', sort:false}">操作</th>
             </tr>
             </thead>

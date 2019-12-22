@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * author：黄丹
+ * author：张政
  *用于与sign表交互得到数据库信息的dao层
  */
 public interface QuerySignMapper {

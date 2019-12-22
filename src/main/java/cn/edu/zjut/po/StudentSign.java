@@ -102,4 +102,19 @@ public class StudentSign {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "StudentSign{" +
+                "stuSignID=" + stuSignID +
+                ", stuID=" + stuID +
+                ", signInstID=" + signInstID +
+                ", signTime=" + signTime +
+                ", signImgUrl='" + signImgUrl + '\'' +
+                ", stuEmail='" + stuEmail + '\'' +
+                ", stuImgUrl='" + stuImgUrl + '\'' +
+                ", similar=" + similar +
+                ", status=" + status +
+                '}';
+    }
 }

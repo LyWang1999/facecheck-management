@@ -33,14 +33,14 @@
             </div>
         </div>
     </form>
-    <div style="width: 650px;margin: 20px 40px;">
+    <div style="width: 700px;margin: 20px 40px;">
         <table class="layui-table" lay-data="{page:true, id:'teaTable'}" lay-filter="test">
             <thead>
             <tr>
-                <th lay-data="{field:'name', width:150, sort: true}">签到项目</th>
+                <th lay-data="{field:'name', width:200, sort: true}">签到项目</th>
                 <th lay-data="{field:'createTime', width:150, sort: true}">发布日期</th>
-                <th lay-data="{field:'description', width:200}">签到描述</th>
-                <th lay-data="{field:'ope'}">操作</th>
+                <th lay-data="{field:'description', width:250}">签到描述</th>
+                <th lay-data="{field:'ope'}">详细信息</th>
             </tr>
             </thead>
             <tbody>

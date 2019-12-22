@@ -68,7 +68,7 @@ public class DailyResultAction {
      * 根据签到的ID获得该签到的列表
      *
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     public String getDailyResult() {//根据大打卡的sign_id得到小打卡的列表
         //signinsatnce的sign_id由jsp传过来

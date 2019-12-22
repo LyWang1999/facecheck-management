@@ -25,12 +25,12 @@
             </div>
         </div>
         <s:textfield name="stulist" id="stulist" hidden="true"/>
-        <div style="width: 400px;margin: 20px 40px;">
+        <div style="width: 550px;margin: 20px 40px;">
             <table id="table" class="layui-table" lay-data="{page:true}">
                 <thead>
                 <tr>
-                    <th lay-data="{field:'startTime', width:150, sort:true}">学号</th>
-                    <th lay-data="{field:'endTime', width:150, sort:true}">姓名</th>
+                    <th lay-data="{field:'startTime', width:200, sort:true}">学号</th>
+                    <th lay-data="{field:'endTime', width:200, sort:true}">姓名</th>
                     <th lay-data="{field:'ope'}">操作</th>
                 </tr>
                 </thead>

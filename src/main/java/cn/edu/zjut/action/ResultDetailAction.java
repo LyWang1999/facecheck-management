@@ -86,8 +86,8 @@ public class ResultDetailAction {
     /**
      * 根据某次详细签到的ID获得该次签到的学生签到情况
      *
-     * @return
-     * @Author 李璐瑶
+     * @return String
+     * @author 王凌云
      */
     public String getResultDetail() {
         try {
@@ -102,8 +102,8 @@ public class ResultDetailAction {
     /**
      * 修改学生的签到情况
      *
-     * @return
-     * @Author 李璐瑶
+     * @return String
+     * @author 王凌云
      */
     public String changeResult() {//修改学生签到情况
         try {

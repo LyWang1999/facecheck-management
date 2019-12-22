@@ -6,7 +6,7 @@ import cn.edu.zjut.po.Sign;
 import java.util.List;
 
 /**
- *author：黄丹
+ *author：张政
  * 用于与dao层的QuerySignMapper交互数据的service层
  * 被QuerySignService所实现
  * */

@@ -7,7 +7,7 @@ import cn.edu.zjut.service.QuerySignInstanceService;
 import java.util.List;
 
 /**
- * author：黄丹
+ * author：张政
  * 用于查询显示signinsteance表信息的action层
  */
 public class QuerySignInstanceaction {

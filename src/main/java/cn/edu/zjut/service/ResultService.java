@@ -35,7 +35,7 @@ public class ResultService implements IResultService {
      *
      * @param teacher_id
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     @Override
     public List<Sign> getByTeacher_id(int teacher_id) {
@@ -58,7 +58,7 @@ public class ResultService implements IResultService {
      * @param sign_name
      * @param teacher_id
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     @Override
     public List<Sign> getBySign_name(String sign_name, int teacher_id) {
@@ -77,7 +77,7 @@ public class ResultService implements IResultService {
      * @param createtime
      * @param teacher_id
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     @Override
     public List<Sign> getByCreatetime(String createtime, int teacher_id) {
@@ -97,7 +97,7 @@ public class ResultService implements IResultService {
      * @param type
      * @param teaID
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     public List<Sign> find(String message, int type, int teaID) {
         ActionContext ctx = ActionContext.getContext();
@@ -121,7 +121,7 @@ public class ResultService implements IResultService {
      *
      * @param sign_id
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     @Override
     public Sign getBySign_id(String sign_id) {

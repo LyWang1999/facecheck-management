@@ -17,10 +17,20 @@
     </resultMap>
 
     <select id="selectBySigninstance_id" resultMap="resuldetailtMap" resultType="cn.edu.zjut.po.ResultDetail">
-        select student_img,student_name,student_classname as student_class,student_departname as student_department,student_sign.*  from student,student_sign where student.student_id=student_sign.student_id and signinstance_id=#{signInstID}
+        select student_img,
+               student_name,
+               student_classname  as student_class,
+               student_departname as student_department,
+               student_sign.*
+        from student,
+             student_sign
+        where student.student_id = student_sign.student_id
+          and signinstance_id = #{signInstID}
     </select>
     <select id="update" resultMap="resuldetailtMap">
-        update student_sign set status=#{arg1} where Autoid=#{arg0}
+        update student_sign
+        set status=#{arg1}
+        where Autoid = #{arg0}
     </select>
 
 

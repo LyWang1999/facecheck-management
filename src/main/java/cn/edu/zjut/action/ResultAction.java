@@ -79,7 +79,7 @@ public class ResultAction extends ActionSupport {
      * 根据教师的ID查看该教师发布的所有签到
      *
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     public String lookAllSign()//根据teacher_id查看该老师发布的所有签到信息
     {
@@ -98,7 +98,7 @@ public class ResultAction extends ActionSupport {
      * 根据签到名查询签到
      *
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     public String getByName()//根据签到名称查找       teacher_id和sign_name查看该老师发布的信息
     {
@@ -114,7 +114,7 @@ public class ResultAction extends ActionSupport {
      * 根据创建时间查询签到
      *
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     public String getByTime()//根据签到发布时间       teacher_id和createtime查看该老师发布的所有签到信息
     {
@@ -130,7 +130,7 @@ public class ResultAction extends ActionSupport {
      * 用户选择查询类别，输入查询信息，查询签到
      *
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     public String findSign() {
         try {

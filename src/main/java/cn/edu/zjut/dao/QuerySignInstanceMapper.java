@@ -5,7 +5,7 @@ import cn.edu.zjut.po.SignInstance;
 import java.util.List;
 
 /**
- * author：黄丹
+ * author：张政
  * 用于得到signinstance表信息的dao层
  */
 public interface QuerySignInstanceMapper {

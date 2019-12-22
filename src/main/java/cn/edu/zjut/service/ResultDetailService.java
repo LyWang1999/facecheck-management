@@ -30,7 +30,7 @@ public class ResultDetailService implements IResultDetailService {
      *
      * @param signInstID
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     @Override
     public List<ResultDetail> getBySignInstance_id(int signInstID) {//根据小打卡id获得该打卡的学生打卡情况
@@ -41,6 +41,13 @@ public class ResultDetailService implements IResultDetailService {
         List<ResultDetail> list = new ArrayList();
         try {
             list = (List<ResultDetail>) resultdetailmapper.selectBySigninstance_id(signInstID);
+            for (ResultDetail resultDetail: list){
+                String url = resultDetail.getStudentsign().getStuImgUrl();
+                String[] array = new String[7];
+                array = url.split("//");
+                String newUrl = "http://101.132.166.211:8080/checkin/register/"+array[6];
+                resultDetail.getStudentsign().setStuImgUrl(newUrl);
+            }
             request.put("list", list);
             session.put("list", list);
         } catch (Exception e) {
@@ -54,7 +61,7 @@ public class ResultDetailService implements IResultDetailService {
      *
      * @param StuSignID
      * @param status
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     @Override
     public void update(Integer StuSignID, Integer status) {//修改学生打卡情况

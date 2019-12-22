@@ -27,7 +27,7 @@ public class DailyResultService implements IDailyResultService {
      *
      * @param signID
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
 
     @Override
@@ -47,7 +47,7 @@ public class DailyResultService implements IDailyResultService {
      *
      * @param signInstID
      * @return
-     * @Author 李璐瑶
+     * @author 王凌云
      */
     @Override
     public DailyResult getBySigninstance_id(int signInstID) {

@@ -42,25 +42,25 @@
 
             settime($("#code_btn")); //开始倒计时
         }
-    })
+    });
 
-    function check() {
-        var code = document.getElementById("code").value;
-        var cookiecode = getCookieValue("code");
-        console.log(cookiecode);
-        if (code == null || code == "") {
-            alert("请输入验证码");
-            return false;
-        } else if (cookiecode == null) {
-            alert("请先获取验证码");
-            return false;
-        } else if (code != cookiecode) {
-            alert("验证码不正确");
-            return false;
-        } else return true;
-        return true;
-
-    }
+    // function check() {
+    //     var code = document.getElementById("code").value;
+    //     var cookiecode = getCookieValue("code");
+    //     console.log(cookiecode);
+    //     if (code == null || code == "") {
+    //         alert("请输入验证码");
+    //         return false;
+    //     } else if (cookiecode == null) {
+    //         alert("请先获取验证码");
+    //         return false;
+    //     } else if (code != cookiecode) {
+    //         alert("验证码不正确");
+    //         return false;
+    //     } else return true;
+    //     return true;
+    //
+    // }
 
 
     //发送验证码时添加cookie
@@ -235,18 +235,18 @@
             </div>
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label" style="width:150px ">
-                <input id="code_btn" type="button" class="layui-btn"
-                       style="overflow:hidden;" value="点击获取验证码"/>
-            </label>
-            <div class="layui-input-block">
-                <div>
-                    <input type="text" id="code" placeholder="Please input your code" backgroundColor="#E4E4E4"
-                           style="width:40%; overflow:hidden; white-space:nowrap;" class="layui-input">
-                </div>
-            </div>
-        </div>
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label" style="width:150px ">--%>
+<%--                <input id="code_btn" type="button" class="layui-btn"--%>
+<%--                       style="overflow:hidden;" value="点击获取验证码"/>--%>
+<%--            </label>--%>
+<%--            <div class="layui-input-block">--%>
+<%--                <div>--%>
+<%--                    <input type="text" id="code" placeholder="Please input your code" backgroundColor="#E4E4E4"--%>
+<%--                           style="width:40%; overflow:hidden; white-space:nowrap;" class="layui-input">--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
         <div class="layui-form-item">
             <label class="layui-form-label" style="width:150px "></label>

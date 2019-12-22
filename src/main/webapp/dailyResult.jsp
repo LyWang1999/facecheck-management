@@ -12,12 +12,12 @@
         <table class="layui-table" lay-data="{page:true}" lay-filter="test">
             <thead>
             <tr>
-                <th lay-data="{field:'name', width:100}">签到项目</th>
+                <th lay-data="{field:'name', width:150}">签到项目</th>
                 <th lay-data="{field:'date', width:150,sort:true}">发布日期</th>
                 <th lay-data="{field:'startTime', width:150, sort:true}">开始时间</th>
                 <th lay-data="{field:'endTime', width:150,  sort:true}">截止时间</th>
                 <th lay-data="{field:'placeName', width:400, sort:true}">签到地点</th>
-                <th lay-data="{field:'ope'}">操作</th>
+                <th lay-data="{field:'ope'}">应到/实到</th>
             </tr>
             </thead>
             <tbody>

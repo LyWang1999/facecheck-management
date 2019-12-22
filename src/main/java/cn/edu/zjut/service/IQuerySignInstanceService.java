@@ -5,7 +5,7 @@ import cn.edu.zjut.po.SignInstance;
 import java.util.List;
 
 /**
- * author:黄丹
+ * author:张政
  *用于与dao层的QuerySigninstanceMapper进行数据交互的service层接口
  *被QuerySignInstanceService实现
  */

@@ -6,6 +6,9 @@
 <script type="text/javascript" src="/js/DateTimePicker.js"></script>
 <%@ include file="UITeaHead.jsp" %>
 <div class="layui-body">
+    <div class="layui-text" style="font-size: 25px; color: #393D49;width: 400px;height: 30px;padding: 35px">
+        创建签到计划
+    </div>
     <form action="TaskOutCenterAction.action" method="post" align="center" class="layui-table">
         <div class="layui-form-item">
             <label class="layui-form-label">教师ID</label>
@@ -27,11 +30,11 @@
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">描述</label>
             <div class="layui-input-block">
-                <textarea name="sign.description" placeholder="请输入内容" class="layui-textarea"></textarea>
+                <textarea name="sign.description" style="width:1000px" placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
 
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="margin-left:-400px">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>

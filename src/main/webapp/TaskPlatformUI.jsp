@@ -41,11 +41,11 @@
         </div>
     </form>
 
-    <div style="width: 850px;margin: 20px 40px;">
+    <div style="width: 950px;margin: 20px 40px;">
         <table class="layui-table" lay-data="{page:true, id:'teaTable'}" lay-filter="test">
             <thead>
             <tr>
-                <th lay-data="{field:'name', width:150, sort:true}">计划名称</th>
+                <th lay-data="{field:'name', width:250, sort:true}">计划名称</th>
                 <th lay-data="{field:'createTime', width:250, sort:true}">创建时间</th>
                 <th lay-data="{field:'description', width:300}">计划描述</th>
                 <th lay-data="{field:'ops', sort:true}">操作</th>

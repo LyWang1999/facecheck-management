@@ -10,21 +10,21 @@ import java.util.List;
 public interface SuggestMapper {
 
     /**
-     * @Author 卢益铭
+     * @author 吴一帆
      * @Describe 返回所有的学生反馈
      * @return
      */
     List<Suggest> listStudentSuggest();
 
     /**
-     * @Author 卢益铭
+     * @author 吴一帆
      * @Describe 返回所有的教师反馈
      * @return
      */
     List<Suggest> listTeacherSuggest();
 
     /**
-     * @Author 卢益铭
+     * @author 吴一帆
      * @Describe 教师插入一条反馈
      * @param teacherID
      * @param suggest

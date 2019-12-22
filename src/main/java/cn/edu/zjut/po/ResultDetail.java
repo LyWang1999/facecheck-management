@@ -37,4 +37,14 @@ public class ResultDetail {
     public String getStudent_department() {
         return student_department;
     }
+
+    @Override
+    public String toString() {
+        return "ResultDetail{" +
+                "studentsign=" + studentsign +
+                ", student_name='" + student_name + '\'' +
+                ", student_class='" + student_class + '\'' +
+                ", student_department='" + student_department + '\'' +
+                '}';
+    }
 }

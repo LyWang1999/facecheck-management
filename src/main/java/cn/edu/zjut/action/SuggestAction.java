@@ -31,7 +31,7 @@ public class SuggestAction {
     private ISuggestService suggestService = null;
 
     /**
-     * @Author 卢益铭
+     * @author 吴一帆
      * @Describe 调用suggestService的getStudentSuggest方法
      * 根据结果返回对应的字符串
      * @return
@@ -49,7 +49,7 @@ public class SuggestAction {
     }
 
     /**
-     * @Author 卢益铭
+     * @author 吴一帆
      * @Describe 调用suggestService的getTeacherSuggest方法
      * 根据结果返回对应的字符串
      * @return
@@ -67,7 +67,7 @@ public class SuggestAction {
     }
 
     /**
-     * @Author 卢益铭
+     * @author 吴一帆
      * @Describe 传入教师的teaID和输入的建议suggest
      * 调用suggestService的insertTeacherSuggest方法
      * @return
