@@ -130,15 +130,15 @@
     });
 
 
-    function myFunction() {
+    function myFunction1() {
         var message = sessionStorage.getItem('message'), str;
         var x = document.cookie;
-        if(x != null){
+        if (x != null) {
             var result = x.position.split(",");
             document.getElementById("longitude").value = result[0];
             document.getElementById("latitude").value = result[1];
             document.getElementById("address").value = result[2];
-            document.cookie='';
+            document.cookie = '';
         }
         if (message != null) {
             str = JSON.parse(message);
@@ -150,10 +150,33 @@
         }
     }
 
+    function myFunction() {
+        var afterUrl = window.location.search.substring(1);//问号以后的字符串
+        var afterEqual = afterUrl.substring(afterUrl.indexof('=') + 1);//(等号以后的字符串，及你所要的参数)
+        if (afterEqual != null) {
+            var result = afterEqual.position.split(",");
+            document.getElementById("longitude").value = result[0];
+            document.getElementById("latitude").value = result[1];
+            document.getElementById("address").value = result[2];
+        }
+    }
+<%
+    String latitude = (String)request.getParameter("latitude");
+    String longitude = (String)request.getParameter("longitude");
+    String address = (String)request.getParameter("address");
+    if(latitude == null){
+        latitude = "请打开地图";
+    }
+    if(longitude == null){
+        longitude = "请打开地图";
+    }
+    if(address == null){
+        address = "请打开地图";
+    }
+%>
 </script>
-
 <div id="dtBox"></div>
-<div class="layui-body" onload="return myFunction()">
+<div class="layui-body" onload="myFunction()">
     <div class="layui-text" style="font-size: 25px; color: #393D49;width: 400px;height: 30px;padding: 35px">
         模板创建
     </div>
@@ -180,16 +203,18 @@
         <div class="layui-form-item">
             <label class="layui-form-label" style="width:150px ">签到经度</label>
             <div class="layui-input-block">
-                <input type="text" name="template.longitude" id="longitude" readonly style="width: 40%"
-                       placeholder="请打开地图" autocomplete="off" class="layui-input">
+                <input type="text" name="template.longitude" id="longitude" style="width: 40%"
+                       placeholder="请打开地图" autocomplete="off" class="layui-input"
+                       value = "<%=longitude%>">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label" style="width:150px ">签到纬度</label>
             <div class="layui-input-block">
-                <input type="text" name="template.latitude" id="latitude" readonly style="width: 40%"
-                       placeholder="请打开地图" autocomplete="off" class="layui-input">
+                <input type="text" name="template.latitude" id="latitude" style="width: 40%"
+                       placeholder="请打开地图" autocomplete="off" class="layui-input"
+                       value = "<%=latitude%>">
             </div>
         </div>
 
@@ -204,8 +229,9 @@
         <div class="layui-form-item">
             <label class="layui-form-label" style="width:150px ">签到地点</label>
             <div class="layui-input-block">
-                <input type="text" id="address" readonly name="template.placeName" required lay-verify="required"
-                       style="width: 40%" placeholder="请打开地图" autocomplete="off" class="layui-input">
+                <input type="text" id="address" name="template.placeName" required lay-verify="required"
+                       style="width: 40%" placeholder="请打开地图" autocomplete="off" class="layui-input"
+                       value = "<%=address%>">
             </div>
         </div>
 
