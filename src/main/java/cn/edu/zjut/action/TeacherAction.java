@@ -115,4 +115,8 @@ public class TeacherAction {
 
         }
     }
+
+    public String goToLocate(){
+        return "success";
+    }
 }

@@ -176,10 +176,15 @@
             // self.location=document.referrer;
             var str = message.position + "," + message.address;
             var result = str.split(',');
-            window.open("templateUI.jsp?longitude="+result[0]+"&latitude="+result[1]
-                +"&address="+message.address
-                , 'new_window');
-            window.close();
+            // window.open("templateUI.jsp?longitude="+result[0]+"&latitude="+result[1]
+            //     +"&address="+message.address
+            //     , 'new_window');
+            //
+            // window.close();
+            window.location.href = "templateUI.jsp?longitude="+result[0]+"&latitude="+result[1]
+                +"&address="+message.address;
+
+            //window.history.go(-1);
         });
         AMap.event.addDomListener(stopButton, 'click', function () {
             geolocation.getCurrentPosition();

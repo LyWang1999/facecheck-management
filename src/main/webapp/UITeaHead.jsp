@@ -27,14 +27,24 @@
         </ul>
     </div>
 
+
     <!-- 左侧导航区域 -->
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">首页</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="welcome.jsp" id="welcome">欢迎</a></dd>
+                    </dl>
+                </li>
+
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">签到发布</a>
                     <dl class="layui-nav-child">
                         <dd><a href="inToPlatformAction.action" id="planManage">计划管理</a></dd>
+                        <dd><a href="templateUI.jsp" id="createTemplate">模板创建</a></dd>
                         <dd><a href="templistUI.jsp" id="templateManage">模板管理</a></dd>
                     </dl>
                 </li>
@@ -65,3 +75,4 @@
             </ul>
         </div>
     </div>
+
