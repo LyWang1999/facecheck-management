@@ -44,9 +44,14 @@ public class ResultDetailService implements IResultDetailService {
             for (ResultDetail resultDetail: list){
                 String url = resultDetail.getStudentsign().getStuImgUrl();
                 String[] array = new String[7];
+                if(url.indexOf("//") == -1){
+                    continue;
+                }
                 array = url.split("//");
+                System.out.println(url);
                 String newUrl = "http://101.132.166.211:8080/checkin/register/"+array[6];
                 resultDetail.getStudentsign().setStuImgUrl(newUrl);
+                System.out.println(resultDetail.getStudentsign().getStuImgUrl());
             }
             request.put("list", list);
             session.put("list", list);
