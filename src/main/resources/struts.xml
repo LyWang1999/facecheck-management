@@ -98,7 +98,7 @@
         </action>
         <!--教师登录-->
         <action name="teacherLogin" class="cn.edu.zjut.action.TeacherAction" method="login">
-            <result name="success">/addTeacherSuggest.jsp</result>
+            <result name="success">/welcome.jsp</result>
             <result name="fail">/login.jsp</result>
         </action>
         <!--管理员登录-->
@@ -261,5 +261,13 @@
             <result type="chain" name="success">inToPlatformAction</result>
             <result name="fail">login.jsp</result>
         </action>
+
+
+        <!--插入签到模版-->
+        <action name="locate" class="cn.edu.zjut.action.TeacherAction" method="goToLocate">
+            <result name="success">locate.jsp</result>
+        </action>
+
+
     </package>
 </struts>

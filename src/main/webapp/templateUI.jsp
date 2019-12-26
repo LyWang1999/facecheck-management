@@ -160,20 +160,21 @@
             document.getElementById("address").value = result[2];
         }
     }
-<%
-    String latitude = (String)request.getParameter("latitude");
-    String longitude = (String)request.getParameter("longitude");
-    String address = (String)request.getParameter("address");
-    if(latitude == null){
-        latitude = "请打开地图";
-    }
-    if(longitude == null){
-        longitude = "请打开地图";
-    }
-    if(address == null){
-        address = "请打开地图";
-    }
-%>
+
+    <%
+        String latitude = (String)request.getParameter("latitude");
+        String longitude = (String)request.getParameter("longitude");
+        String address = (String)request.getParameter("address");
+        if(latitude == null){
+            latitude = "请打开地图";
+        }
+        if(longitude == null){
+            longitude = "请打开地图";
+        }
+        if(address == null){
+            address = "请打开地图";
+        }
+    %>
 </script>
 <div id="dtBox"></div>
 <div class="layui-body" onload="myFunction()">
@@ -205,7 +206,7 @@
             <div class="layui-input-block">
                 <input type="text" name="template.longitude" id="longitude" style="width: 40%"
                        placeholder="请打开地图" autocomplete="off" class="layui-input"
-                       value = "<%=longitude%>">
+                       value="<%=longitude%>">
             </div>
         </div>
 
@@ -214,7 +215,7 @@
             <div class="layui-input-block">
                 <input type="text" name="template.latitude" id="latitude" style="width: 40%"
                        placeholder="请打开地图" autocomplete="off" class="layui-input"
-                       value = "<%=latitude%>">
+                       value="<%=latitude%>">
             </div>
         </div>
 
@@ -231,29 +232,29 @@
             <div class="layui-input-block">
                 <input type="text" id="address" name="template.placeName" required lay-verify="required"
                        style="width: 40%" placeholder="请打开地图" autocomplete="off" class="layui-input"
-                       value = "<%=address%>">
+                       value="<%=address%>">
             </div>
         </div>
 
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label" style="width:150px ">--%>
-<%--                <input id="code_btn" type="button" class="layui-btn"--%>
-<%--                       style="overflow:hidden;" value="点击获取验证码"/>--%>
-<%--            </label>--%>
-<%--            <div class="layui-input-block">--%>
-<%--                <div>--%>
-<%--                    <input type="text" id="code" placeholder="Please input your code" backgroundColor="#E4E4E4"--%>
-<%--                           style="width:40%; overflow:hidden; white-space:nowrap;" class="layui-input">--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <%--        <div class="layui-form-item">--%>
+        <%--            <label class="layui-form-label" style="width:150px ">--%>
+        <%--                <input id="code_btn" type="button" class="layui-btn"--%>
+        <%--                       style="overflow:hidden;" value="点击获取验证码"/>--%>
+        <%--            </label>--%>
+        <%--            <div class="layui-input-block">--%>
+        <%--                <div>--%>
+        <%--                    <input type="text" id="code" placeholder="Please input your code" backgroundColor="#E4E4E4"--%>
+        <%--                           style="width:40%; overflow:hidden; white-space:nowrap;" class="layui-input">--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
         <div class="layui-form-item">
             <label class="layui-form-label" style="width:150px "></label>
             <div class="layui-input-block">
                 <input type="submit" class="layui-btn" value="确认" id="go"/>
-                <input type="button" class="layui-btn" value="打开地图" align="right"
-                       onclick="javascrtpt:window.open('locate.jsp', 'window');"/></div>
+                <a href="locate.action"><input type="button" class="layui-btn" value="打开地图" align="right"
+                                               onclick=""/></a></div>
         </div>
         <%--
             <label>
